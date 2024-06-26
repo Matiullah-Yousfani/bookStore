@@ -1,0 +1,35 @@
+﻿@model List<Category>
+
+<div class="container">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">
+                Category List
+            </h2>
+        </div>
+        <div class="col-6 text-end">
+            <a asp-controller="Category" asp-action="Upsert" class="btn btn-primary">
+                <i class="bi bi-plus-circle"> Add New Category</i>
+            </a>
+        </div>
+    </div>
+    <div class="table-responsive mt-4">
+        <table id="tblData1" class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>Category Name</th>
+                    <th>Display Order</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+              
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+@section scripts{
+    <script src="~/js/category.js"></script>
+}

@@ -1,0 +1,53 @@
+﻿<style>
+    .fixed-card {
+        height: 500px; /* Set the height you want for your card */
+        display: flex;
+        flex-direction: column;
+    }
+
+    .fixed-image {
+        height: 400px; /* Set the height you want for the image container */
+        overflow: hidden;
+    }
+
+        .fixed-image img {
+            height: 100%; /* Ensure the image takes the full height of the container */
+            object-fit: cover; /* Maintain the aspect ratio and cover the container */
+        }
+</style>
+
+@model IEnumerable<Product>
+
+<div class="row pb-3">
+    @foreach (var product in Model)
+    {
+        <div class="col-lg-3 col-sm-6">
+            <div class="row p-2">
+                <div class="col-12 p-1">
+                    <div class="card border-0 p-3 shadow border-top border-5 rounded fixed-card">
+                        <div class="fixed-image">
+                            <img src="@product.ImageURL" class="card-img-top rounded">
+                        </div>
+                        <div class="card-body pb-0 d-flex flex-column">
+                            <div class="pl-1">
+                                <p class="card-title h5 text-dark opacity-75 text-uppercase text-center">@product.Title</p>
+                                <p class="card-title text-warning text-center">by <b>@product.Author</b></p>
+                            </div>
+                            <div class="pl-1">
+                                <p class="text-dark text-opacity-75 text-center mb-0">List Price: <span class="text-decoration-line-through">@product.ListPrice.ToString("c")</span></p>
+                            </div>
+                            <div class="pl-1">
+                                <p class="text-dark text-opacity-75 text-center">As low as: <span>@product.Price100.ToString("c")</span></p>
+                            </div>
+                            <div class="mt-auto">
+                                <a asp-action="Details" asp-route-productID="@product.ProdID" class="btn btn-primary bg-gradient border-0 form-control">
+                                    Details
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
